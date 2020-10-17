@@ -1,56 +1,8 @@
-## 下载依赖包
-
-``` shell
-grape install com.xlson.groovycsv groovycsv 1.3
-```
-
-下载的依赖包默认在~/.groovy/grapes下
-
-
-
-## 目录结构
-
-独立运行环境目录结构如下
-
-``` shell
-httpbuilder
- │  env.bat <-- 环境变量设置批处理
- │  srcript.groovy
- ├─grapes   <-- 依赖包(-Dgrape.root所指定的目录)
- ├─groovy   <-- groovy运行环境
- ├─jre      <-- jre运行环境
- └─README.md<-- 说明文档
-```
-
-
-
-## 脚本内容
-
-``` groovy
-@Grab('com.xlson.groovycsv:groovycsv:1.3')
-import static com.xlson.groovycsv.CsvParser.parseCsv
-
-def csv = new File('input.csv').text
-
-def data = parseCsv(csv)
-for(line in data) {
-	def c1 = "$line.c1".trim()
-	def c2 = "$line.c2".trim()
-	def c3 = "$line.c3".trim()
-    println "$c1 $c2 $c3"
-}
-```
-
-
-
-## 环境变量设置脚本
-
-``` shell
 @echo off
 
 REM
 REM ================================================================
-REM 创建快捷方式
+REM ������ݷ�ʽ
 REM ================================================================
 REM
 :CreateShorcut
@@ -86,7 +38,7 @@ SET _K_Arguments=
 SET _K_Description=
 SET _K_WorkDir=
 
-echo 请使用快捷方式 "%linkfile%" 来启动命令行工具
+echo ��ʹ�ÿ�ݷ�ʽ "%linkfile%" �����������й���
 set linkfile=
 pause
 exit /b 0
@@ -94,7 +46,7 @@ exit /b 0
 
 REM
 REM ================================================================
-REM 设置环境变量
+REM ���û�������
 REM ================================================================
 REM
 :SetDevEnv
@@ -104,17 +56,3 @@ set GROOVY_HOME=groovy
 set PATH=%PATH%;%JAVA_HOME%\bin;%GROOVY_HOME%\bin;
 
 :Done
-```
-
-
-
-## 执行命令
-
-运行env.bat产生命令行快捷方式env.lnk，双击打开命令行快捷方式，执行如下命令
-
-``` shell
-groovy -Dgrape.root=grapes srcipt.groovy
-```
-
-
-
