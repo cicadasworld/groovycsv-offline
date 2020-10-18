@@ -3,10 +3,16 @@ import static com.xlson.groovycsv.CsvParser.parseCsv
 
 def csv = new File('input.csv').text
 
-def data = parseCsv(csv)
-for(line in data) {
-	def c1 = "$line.c1".trim()
-	def c2 = "$line.c2".trim()
-	def c3 = "$line.c3".trim()
+/*
+ * col1,col2,col3
+ * john,23,sports
+ * tom,36,engineer
+ */
+
+def data = parseCsv(csv, readFirstLine: false)
+data.each { line ->
+	def c1 = "${line[0]}".trim()
+	def c2 = "${line[1]}".trim()
+	def c3 = "${line[2]}".trim()
     println "$c1 $c2 $c3"
 }
