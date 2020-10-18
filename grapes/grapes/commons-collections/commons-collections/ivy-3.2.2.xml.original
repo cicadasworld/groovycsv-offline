@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
-	<info organisation="commons-collections" module="commons-collections" revision="3.2.2" status="release" publication="20200523185721">
+	<info organisation="commons-collections"
+		module="commons-collections"
+		revision="3.2.2"
+		status="release"
+		publication="20151114221952"
+	>
 		<description homepage="http://commons.apache.org/collections/">
 		Types that extend and augment the Java Collections Framework.
 		</description>
